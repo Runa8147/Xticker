@@ -49,34 +49,17 @@ def upload_image():
 def crop_image(image):
     """Allow user to crop the image using interactive cropper."""
     st.sidebar.subheader("2. Crop Image")
-    realtime_update = st.sidebar.checkbox("Update in Real Time", value=True)
-    box_color = st.sidebar.color_picker("Box Color", value='#00FF00')
-    aspect_choice = st.sidebar.radio(
-        "Aspect Ratio",
-        options=["1:1", "16:9", "4:3", "2:3", "Free"],
-        format_func=lambda x: x
-    )
-    aspect_dict = {
-        "1:1": (1, 1),
-        "16:9": (16, 9),
-        "4:3": (4, 3),
-        "2:3": (2, 3),
-        "Free": None
-    }
-    aspect_ratio = aspect_dict[aspect_choice]
+    st.sidebar.subheader("2. Crop Image")
 
-    st.info("Drag to select crop area and double-click to confirm.")
-    cropped_img = st_cropper(
-        image,
-        realtime_update=realtime_update,
-        box_color=box_color,
-        aspect_ratio=aspect_ratio,
-        key='cropper'
-    )
+    img_w, img_h = image.size
+    st.sidebar.write(f"Image size: {img_w}×{img_h}")
 
-    if cropped_img is None:
-        st.warning("Please complete the cropping step.")
-        st.stop()
+    left = st.sidebar.slider("Left", 0, img_w, 0)
+    top = st.sidebar.slider("Top", 0, img_h, 0)
+    right = st.sidebar.slider("Right", left+1, img_w, img_w)
+    bottom = st.sidebar.slider("Bottom", top+1, img_h, img_h)
+
+    cropped_img = image.crop((left, top, right, bottom))
     return cropped_img
 
 
