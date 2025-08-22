@@ -1,8 +1,7 @@
 # Core Streamlit app dependencies
 pillow==10.0.0
 streamlit
-streamlit-cropper
-
+streamlit-cropper==0.0.8
 
 # Background removal
 rembg==2.0.34
@@ -12,6 +11,7 @@ fonttools==4.50.0
 
 # Typing and compatibility
 numpy>=1.21.0
+
 
 
 
