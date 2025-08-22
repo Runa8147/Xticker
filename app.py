@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_cropper import st_cropper
+import streamlit_cropper as st_cropper
 from PIL import Image, ImageDraw, ImageFont
 import os
 import uuid
@@ -226,4 +226,5 @@ def main():
 # RUN APP
 # -------------------------
 if __name__ == "__main__":
+
     main()
