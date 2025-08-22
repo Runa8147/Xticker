@@ -1,5 +1,4 @@
 import streamlit as st
-from streamlit_cropper import st_cropper
 from PIL import Image, ImageDraw, ImageFont
 import os
 import uuid
@@ -49,8 +48,6 @@ def upload_image():
 def crop_image(image):
     """Allow user to crop the image using interactive cropper."""
     st.sidebar.subheader("2. Crop Image")
-    st.sidebar.subheader("2. Crop Image")
-
     img_w, img_h = image.size
     st.sidebar.write(f"Image size: {img_w}×{img_h}")
 
@@ -210,3 +207,4 @@ def main():
 # -------------------------
 if __name__ == "__main__":
     main()
+
